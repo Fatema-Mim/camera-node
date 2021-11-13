@@ -2,7 +2,7 @@ const express = require('express');
 const { MongoClient } = require('mongodb');
 const cors = require('cors');
 const app = express();
-const port = process.env .PORT || 5000;
+const port = process.env.PORT || 5000;
 require('dotenv').config()
 const ObjectId = require('mongodb').ObjectId;
 // middleware
@@ -109,15 +109,6 @@ async function run() {
             console.log('hitting the post', result);
             res.json(result);
         })
-
-        // GET API
-        app.get('/users', async (req, res) => {
-            const cursor = userCollection.find({});
-            const users = await cursor.toArray();
-            console.log('ok done')
-            res.send(users);
-        })
-
 
         // find user admin or not
         app.get('/users/:email' , async(req,res) =>{
