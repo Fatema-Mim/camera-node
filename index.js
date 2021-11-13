@@ -40,6 +40,18 @@ async function run() {
             console.log('hitting the post',result);
             res.json(result);
         })
+        //product delete api 
+        app.delete("/productAdd/:id", async (req, res) => {
+
+            const result = await productCollection.deleteOne({
+                _id: ObjectId(req.params.id),
+            });
+            res.send(result);
+        });
+
+
+
+
         // Order Get api 
 
         app.get('/order', async (req, res) => {
